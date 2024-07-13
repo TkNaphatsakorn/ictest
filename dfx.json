@@ -5,22 +5,27 @@
       "type": "motoko"
     },
     "hello_world_frontend": {
-      "dependencies": [
-        "hello_world_backend"
-      ],
-      "source": [
-        "src/hello_world_frontend/dist"
-      ],
+      "dependencies": ["hello_world_backend"],
+      "source": ["src/hello_world_frontend/dist"],
       "type": "assets",
       "workspace": "hello_world_frontend"
     }
   },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    },
+    "ic": {
+      "providers": [
+        "https://ic0.app"
+      ],
+      "type": "persistent"
     }
   },
-  "output_env_file": ".env",
-  "version": 1
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  }
 }
